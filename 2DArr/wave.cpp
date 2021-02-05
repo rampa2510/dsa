@@ -15,11 +15,13 @@ int main() {
 
   for (int col = 0; col < n; col++) {
     if (col % 2 == 0) {
-      for (int row = 0; row < m; row++)
-        cout << a[row][col] << " ";
-    } else {
-      for (int row = m - 1; row >= 0; row--)
-        cout << a[row][col] << " ";
+      for (size_t row = 0; row < m; row++)
+      {cout << a[row][col] << " row " << row << " ";
+          if (row > m)
+              cout << row << endl;
+      }    
+      for (size_t row = m - 1; row >= 0; row--)
+        cout << a[row][col] << " row " << row << " ";
     }
   }
 
