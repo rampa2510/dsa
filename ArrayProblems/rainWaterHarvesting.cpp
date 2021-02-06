@@ -24,15 +24,24 @@ int rainWater1(int a[100], int n) {
 }
 
 // O(n)
-//int rainWater(int a[100],int n){
-//    int left[n],right[n],res=0,max_ = INT_MIN;
-//    
-//    left[0] = a[0];
-//
-//    for(int i=1;i<n;i++)
-//        left[i] = max(left[i-1],a[i]);
-//    
-//}
+int rainWater(int a[100], int n) {
+  int res = 0, l[n], r[n];
+
+  l[0] = a[0];
+  for (int j = 1; j < n; j++)
+    l[j] = max(l[j - 1], a[j]);
+
+  r[n - 1] = a[n - 1];
+
+  for (int j = n - 2; j >= 0; j--)
+    r[j] = max(r[j + 1], a[j]);
+
+  for (int i = 1; i < n - 1; i++) {
+
+    res += min(l[i], r[i]) - a[i];
+  }
+  return res;
+}
 
 int main() {
   int n, a[100], r;
@@ -40,7 +49,7 @@ int main() {
   for (int i = 0; i < n; i++) {
     cin >> a[i];
   }
-  r = rainWater1(a, n);
+  r = rainWater(a, n);
   cout << r << endl;
   return 0;
 }
