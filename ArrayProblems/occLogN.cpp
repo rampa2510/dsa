@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int *low(int *a, int n, int k) {
+int low(int *a, int n, int k) {
   int i = 0, m, h = n - 1, ans = -1;
   while (i <= h) {
     m = (i + h) / 2;
@@ -15,11 +15,11 @@ int *low(int *a, int n, int k) {
     else
       i = m + 1;
   }
-  cout << i << "\n";
-  return &a[ans];
+  /* cout << i << "\n"; */
+  return ans;
 }
 
-int *up(int *a, int n, int k) {
+int up(int *a, int n, int k) {
   int i = 0, h = n - 1, m, ans = -1;
   while (i <= h) {
     m = (i + h) / 2;
@@ -31,14 +31,14 @@ int *up(int *a, int n, int k) {
     else
       i = m + 1;
   }
-  cout << i << "\n";
-  return &a[ans];
+  /* cout << i << "\n"; */
+  return ans;
 }
 
 int main() {
   int a[10] = {1, 2, 2, 2, 5, 6, 7, 8, 9, 10};
-  int *lb = low(a, 10, 4);
-  int *ub = up(a, 10, 4);
-  cout << lb << "\n";
+  int lb = low(a, 10, 4);
+  int ub = up(a, 10, 4);
+  cout << lb<<" "<<ub << "\n";
   return 0;
 }
