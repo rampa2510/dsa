@@ -9,7 +9,7 @@ void method2(int n) {
     ans = n & 1;
     ans += ans * p;
     p *= 10;
-    n>>=1;
+    n >>= 1;
   }
   cout << ans << "\n";
 }
