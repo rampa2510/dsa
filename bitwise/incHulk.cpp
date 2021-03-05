@@ -2,25 +2,26 @@
 
 using namespace std;
 
-int getMaxSetBitPos(int n) {
-  int pos = 0, c = 0;
-  while (n > 0) {
-    if (n & 1)
-      pos = c;
-    c++;
-    n >>= 1;
+int getLesserNumInPowOf2(int n) {
+  int currNum = 1, prevNum = 1;
+  while (true) {
+    if (currNum > n)
+      return prevNum;
+    else if (currNum <= n)
+      prevNum = currNum;
+    currNum <<= 1;
   }
-  return pos;
+  return prevNum;
 }
 
 int main() {
-  int t, n, maxSetBit,a;
+  int t, n, lessNum, a, diffInSteps;
   cin >> t;
   for (int i = 0; i < t; i++) {
     cin >> n;
-    maxSetBit = getMaxSetBitPos(n);
-    a = 1<<maxSetBit;
-    cout << a;
+    lessNum = getLesserNumInPowOf2(n);
+    diffInSteps = n - lessNum;
+    cout << 1 + diffInSteps << "\n";
   }
   return 0;
 }
